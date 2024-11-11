@@ -4,23 +4,6 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PooledItem : MonoBehaviour
-{
-	GameObjectPool pool;
-	public void Init(GameObjectPool pool,int id = -1)
-	{
-		this.pool = pool;
-		if(this.gameObject.TryGetComponent<ILoadable>(out ILoadable loadable))
-		{
-			loadable.Load(id);
-		}
-	}
-	private void OnDisable()
-	{
-		pool.Release(this.gameObject);
-	}
-}
-
 public class GameObjectPool
 {
 	private Stack<GameObject> pool = new Stack<GameObject>();
@@ -45,10 +28,11 @@ public class GameObjectPool
 		}
 	}
 
-	public GameObject TakeFromPool(Vector3 position = default)
+	public GameObject TakeFromPool(Vector3 position = default, Quaternion rotation = default(Quaternion))
 	{
 		GameObject go = IsPoolEmpty ? CreateItem() : pool.Pop();
 		go.transform.position = position;
+		go.transform.rotation = rotation;
 		go.SetActive(true);
 		return go;
 	}
