@@ -32,4 +32,10 @@ public class SpawnManager : Singleton<SpawnManager>
     {
         return Spawn("Enemy",id,position,rotation);
     }
+
+    public GameObject SpawnTower(int id, Vector3 position = default,
+        Quaternion rotation = default(Quaternion))
+    {
+        return Spawn("TowerPivot",id,position,rotation);
+    }
 }
