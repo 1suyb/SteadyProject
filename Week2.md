@@ -8,19 +8,37 @@
 - [-] enemy가 마지막 waypoint에 도착하면 enemy가 사라지면서 stageManager의 FailCount가 증가하도록 구현.  
 - [-] currentenemeycount가 0일때 fail포인트를 비교하여 스테이지 클리어/실패 구현. failthreshold를 두어 일정 수 이하로 실패하면 성공할 수 있도록 구현 
 
+### 11-13 
+- 타워 설치 구현
+    - MapTile에 OnMouseUP 이벤트 함수에 타워 설치 함수 구현
+    
 
 - Todo  
-    - 타워 설치 구현
-        - player touch(click) interaction 구현
-        - 타워 설치가 가능한 오브젝트 상호작용 구현
-        - 터치하면 바로 타워가 설치되도록 (임시)
-
-
     - 타워 공격 구현
+        - 두가지 공격 타입
+            - 인식범위안에 들어오면 <발사체>을 발사
+        - attackinterbaltime간격으로 공격 시전
+    - 발사체 구현
+        - https://suyb.tistory.com/84 전략 패턴을 활용해서 발사체의 움직임 구현
+            - IProjectileTrajectory
+        - 커맨드 패턴을 활용해서 발사체의 데미지 주는 방식을 구현
+            - IAttackType
+        - 팩토리 패턴을 활용해서 정보에 따라 발사체를 재조립 해줄 수 있음.
+
+        - 투사체
+            - 단일 타겟
+                - like 젠야타
+            - 범위 타겟
+                - like 솔저 우클릭
+                - like 장판 (솔저 힐장판 타격버전)
+        - hitscan
+            - like 솔저
     - 적 피격 구현
 
     - UI 구현
 
     - 다양한 적 데이터를 받을 수 있게 구현
     - 다양한 타워 데이터 구현
+        - 타워 설치 구현 수정 - id 에 따라서 서로 다른 타워가 설치되도록
     - 다양한 스테이지 구현
+        - 타워 설치 구현 수정 - 스테이지 설정에 따라서 타워 개수가 제한되도록
