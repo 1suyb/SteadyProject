@@ -56,6 +56,4 @@ public class GameObjectPool
 		}
 		pool.Push(go);
 	}
-
-
 }

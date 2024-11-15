@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
+    [SerializeField] private GameObject ProjectilePrefab;
     
 }
