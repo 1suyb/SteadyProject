@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour,IDamagable
 {
 	[SerializeField] private float speed;
 	private StageManager _stageManager;
@@ -74,5 +74,10 @@ public class Enemy : MonoBehaviour
 	private void OnDisable()
 	{
 		_stageManager.DiscountCurrentEnemyCount();
+	}
+
+	public void TakeDamage(float damage)
+	{
+		// 체력 감소 기믹 넣기
 	}
 }

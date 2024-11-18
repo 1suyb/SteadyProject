@@ -1,7 +1,7 @@
 using UnityEngine;
 public interface IProjectileTrajectory
 {
-    public void Trajectory(Projectile sourceProjectile, Vector3 targetPosition, float speed);
+    public void Trajectory(Projectile sourceProjectile, Transform target, float speed);
     public void StopMove(Projectile sourceProjectile);
 
 }
