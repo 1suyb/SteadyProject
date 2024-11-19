@@ -30,16 +30,23 @@ public class GameObjectPool
 
 	public GameObject TakeFromPool(Vector3 position = default, Quaternion rotation = default(Quaternion))
 	{
-		GameObject go = IsPoolEmpty ? CreateItem() : pool.Pop();
+		if (IsPoolEmpty)
+		{
+			return CreateItem(position, rotation);
+		}
+
+		GameObject go = pool.Pop();
 		go.transform.position = position;
 		go.transform.rotation = rotation;
 		go.SetActive(true);
 		return go;
 	}
 
-	private GameObject CreateItem()
+	private GameObject CreateItem(Vector3 position = default, Quaternion rotation = default(Quaternion))
 	{
 		GameObject go = GameObject.Instantiate(targetObject);
+		go.transform.position = position;
+		go.transform.rotation = rotation;
 		PooledItem pooledItem = go.AddUniqueComponent<PooledItem>();
 		pooledItem.Init(this, id);
 		poolSize++;

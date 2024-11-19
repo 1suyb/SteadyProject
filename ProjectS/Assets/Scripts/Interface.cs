@@ -12,6 +12,7 @@ public interface ILoadable
 public interface IDamagable
 {
 	public void TakeDamage(float damage);
+
 }
 
 public interface IRangedAttackable

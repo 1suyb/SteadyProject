@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TowerInfo", menuName = "Scriptableobjects/TowerInfo")]
+[CreateAssetMenu(fileName = "TowerInfo", menuName = "ScriptableObjects/TowerInfo")]
 public class TowerInfo : ScriptableObject
 {
     public int ID;
