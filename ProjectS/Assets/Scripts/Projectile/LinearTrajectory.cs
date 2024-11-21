@@ -1,9 +1,16 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 public class LinearTrajectory : IProjectileTrajectory
 {
+    private Projectile projectile;
     private Coroutine coroutine;
+    
+    public LinearTrajectory(Projectile projectile)
+    {
+        this.projectile = projectile;
+    }
     public void Trajectory(Projectile sourceProjectile, Transform target, float speed)
     {
         coroutine = sourceProjectile.StartCoroutine(Move(sourceProjectile.transform, target, speed));
@@ -24,6 +31,7 @@ public class LinearTrajectory : IProjectileTrajectory
                 break;
             }
         }
+		projectile.gameObject.SetActive(false);
     }
 
     public void StopMove(Projectile sourceProjectile)

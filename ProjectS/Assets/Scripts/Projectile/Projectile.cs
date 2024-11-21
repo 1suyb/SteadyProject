@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     public void Init()
     {
         attackType = new BulletAttack();
-        trajectory = new LinearTrajectory();
+        trajectory = new LinearTrajectory(this);
     }
 
     public void Shoot(Transform target)
